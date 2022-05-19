@@ -6,8 +6,8 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-if (!fs.existsSync("src/uploads")) {
-  fs.mkdirSync("src/uploads");
+if (!fs.exists("src/uploads")) {
+  fs.mkdir("src/uploads");
 }
 
 const storage = multer.diskStorage({
