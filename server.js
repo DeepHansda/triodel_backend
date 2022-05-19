@@ -16,9 +16,15 @@ app.use(cors({
     "origin": "*",
   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
 }))
+
 app.use('/api',projectRouter);
 app.use('/api/',contactRouter)
 
+
+app.get('/', (req, res) => {
+    res.status(200).send("hello world");
+    console.log("hello world");
+})
 app.listen(PORT,()=>{
     console.log(`server running on port ${PORT}`)
 })
