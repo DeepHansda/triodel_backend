@@ -6,9 +6,7 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-if (!fs.exists("src/uploads")) {
-  fs.mkdir("src/uploads");
-}
+
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
