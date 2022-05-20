@@ -6,8 +6,12 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-
-
+fs.exists("src/uploads", (e) => {
+  e ? console.log("folder exists")
+    : fs.mkdir("src/uploads", (err) => {
+        err ? console.log(err) : console.log("folder created");
+      });
+});
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, path.join(path.dirname(__dirname), "uploads"));
@@ -56,8 +60,6 @@ cloudinaryUploads = async (filePath, folder) => {
       };
     });
 };
-
-
 
 module.exports = {
   upload: upload,
