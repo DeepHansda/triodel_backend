@@ -5,13 +5,15 @@ const path = require("path");
 const dotenv = require("dotenv");
 
 dotenv.config();
-
-fs.exists("src/uploads", (e) => {
+const pa = path.join(__dirname,"../uploads")
+fs.exists(pa, (e) => {
   e ? console.log("folder exists")
-    : fs.mkdir("src/uploads", (err) => {
+    : fs.mkdir(pa, (err) => {
         err ? console.log(err) : console.log("folder created");
       });
 });
+
+console.log()
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, path.join(path.dirname(__dirname), "uploads"));
